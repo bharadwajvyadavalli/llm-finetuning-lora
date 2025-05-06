@@ -1,0 +1,6 @@
+transformers>=4.30.0
+peft>=0.4.0
+torch>=2.0.0
+datasets>=2.0.0
+wandb>=0.15.0
+PyYAML>=6.0

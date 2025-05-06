@@ -1,0 +1,29 @@
+data:
+  input_path: data/alpaca.json
+  output_path: cache/train.pt
+  max_length: 1024
+
+model:
+  name: meta-llama/Llama-2-7b
+
+test_prompts:
+  - "Hello, how are you?"
+  - "Summarize: Transformers in one sentence."
+
+training:
+  dataset_path: cache/train.pt
+  lora_params:
+    rank: 8
+    alpha: 16
+    dropout: 0.05
+  batch_size: 4
+  lr: 1e-4
+  epochs: 3
+  checkpoint_path: checkpoints/lora_model.pt
+
+evaluation:
+  datasets:
+    qa: cache/qa_dataset.pt
+    summarization: cache/sum_dataset.pt
+    classification: cache/class_dataset.pt
+    translation: cache/trans_dataset.pt
